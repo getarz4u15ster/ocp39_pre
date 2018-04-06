@@ -1,0 +1,17 @@
+---
+    - name: Installing Dependencies for Openshift Container Platform
+      yum:
+        name:
+          - wget
+          - git
+          - net-tools
+          - bind-utils
+          - iptables-services
+          - bridge-utils
+          - sos
+          - psacct
+          - atomic-openshift-utils
+          - docker-1.13.1
+          - NetworkManager
+          - bash-completion
+          - kexec-tools

@@ -1,0 +1,13 @@
+---
+  - name: Ensure SELINUX is Enforcing and set to targeted approach
+    selinux:
+      policy: targeted
+      state: enforcing
+
+  - name: Move selinux Templated file into place
+    copy:
+      src: config
+      dest: "{{ selinux }}"
+   
+  - debug: 
+      msg: Selinux is set to {{ ansible_selinux.status }}, you may want to reboot!!

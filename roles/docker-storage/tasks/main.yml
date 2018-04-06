@@ -1,0 +1,17 @@
+---
+    - name: Creating Docker Storage Configuration File
+      copy:
+        src: docker-storage-setup
+        dest: "{{ dockercfg }}"
+        owner: root
+        group: root
+        mode: 755
+        
+    - name: Check if docker-vg exists
+      stat:
+        path: /dev/{{ dockervg }}
+      register: dockervg_result
+
+    - name: Creating Docker thing Pools and Configuring storage for docker Containers
+      command: "docker-storage-setup"
+      when: (dockervg_result.stat.exists == false)
