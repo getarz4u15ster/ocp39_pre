@@ -6,12 +6,21 @@
         owner: root
         group: root
         mode: 755
-        
+      when: inventory_hostname == nodename
+
     - name: Check if docker-vg exists
       stat:
-        path: /dev/{{ dockervg }}
+        path: /dev/docker-vg
+        get_md5: no
       register: dockervg_result
-
+      when: inventory_hostname == nodename
+        
     - name: Creating Docker thing Pools and Configuring storage for docker Containers
       command: "docker-storage-setup"
-      when: (dockervg_result.stat.exists == false)
+      when: dockervg_result.stat.exists == False and inventory_hostname == nodename
+
+    - name: Enable docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: True

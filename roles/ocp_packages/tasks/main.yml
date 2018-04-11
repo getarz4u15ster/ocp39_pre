@@ -1,5 +1,5 @@
 ---
-    - name: Installing Dependencies for Openshift Container Platform
+    - name: Installing Dependencies for Openshift Container Platform V3.9
       yum:
         name:
           - wget

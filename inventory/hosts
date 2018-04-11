@@ -1,8 +1,13 @@
 # Nodes designated for Openshift Masters
 [ocp-master]
-billybox
-
+node1
+#pedge-master-0
 
 # Nodes designated for Openshift compute nodes
 [ocp-node]
 node1
+#pedge-infra-0
+#pedge-node-0
+#pedge-node-1
+#pedge-node-2
+#pedge-node-3

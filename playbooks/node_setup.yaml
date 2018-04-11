@@ -1,8 +1,8 @@
 ---
-- name: Install Pre-requisite packages and configure Openshift Container PLaform 3.6 Systems for install on Compute Nodes
+- name: Install Pre-requisite packages and configure Openshift Container PLaform 3.9 Systems for install on Compute Nodes
   hosts: ocp-node
   roles: 
     - ocp_packages
-    - firewall
     - docker-service
+    - firewall
     - selinux

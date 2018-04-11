@@ -1,6 +1,0 @@
----
-- name: Check some things in the OS 
-  hosts: ocp-node
-  roles: 
-    - selinux
-    - checkme
