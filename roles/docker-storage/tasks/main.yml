@@ -15,7 +15,7 @@
       register: dockervg_result
       when: inventory_hostname == nodename
         
-    - name: Creating Docker thing Pools and Configuring storage for docker Containers
+    - name: Creating Docker thin Pools and Configuring storage for docker Containers
       command: "docker-storage-setup"
       when: dockervg_result.stat.exists == False and inventory_hostname == nodename
 
