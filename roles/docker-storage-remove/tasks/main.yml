@@ -18,3 +18,5 @@
     path: /var/lib/docker-storage
     state: absent
 
+- name: Remove logical volume for docker-pool
+  command: vgremove -fy vg-docker 
