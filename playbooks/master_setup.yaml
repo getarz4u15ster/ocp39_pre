@@ -5,5 +5,4 @@
     - ocp_packages
     - docker-storage
     - docker-service
-    - firewall
     - selinux

@@ -1,7 +1,14 @@
 ---
+    - name: Checking docker version
+      shell: docker -v | awk '{print substr($3, 1, length($3)-1)}'
+      register: result
+      
+    - debug:
+        var: result.stdout
+
     - name: Creating Docker deamon file
-      copy:
-        src: docker
+      template:
+        src: docker.j2
         dest: "{{ dockercfg }}"
         owner: root
         group: root
@@ -12,3 +19,14 @@
         name: docker
         state: started
         enabled: True
+      ignore_errors: True
+ 
+    - name: Check if docker pool volumes was created
+      stat:
+        path: /dev/mapper/docker--vg-docker--pool
+      register: pool
+
+    - debug:
+        msg: "The Docker Thin pool has been created for {{ ansible_hostname }}"
+      when: pool.stat.exists == "True"
+
