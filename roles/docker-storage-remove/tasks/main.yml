@@ -1,5 +1,10 @@
 ---
 # tasks file for docker-remove
+- name: Stop docker service
+  systemd:
+    name: docker
+    state: stopped
+
 - name: Remove /var/lib/docker
   file:
     path: /var/lib/docker
@@ -12,3 +17,4 @@
   file:
     path: /var/lib/docker-storage
     state: absent
+
