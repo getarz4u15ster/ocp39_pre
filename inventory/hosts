@@ -1,6 +1,3 @@
 # Nodes designated for Openshift Masters
-[ocp-master]
+[ocp-pre]
 billybox
-
-# Nodes designated for Openshift compute nodes
-[ocp-node]
