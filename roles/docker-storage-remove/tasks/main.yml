@@ -1,0 +1,14 @@
+---
+# tasks file for docker-remove
+- name: Remove /var/lib/docker
+  file:
+    path: /var/lib/docker
+    state: absent
+
+- name: Run wipe fs on specified node in question
+  command: wipefs -af "{{ device }}"
+
+- name: Remove docker-storage
+  file:
+    path: /var/lib/docker-storage
+    state: absent

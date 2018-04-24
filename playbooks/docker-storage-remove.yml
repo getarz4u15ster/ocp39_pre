@@ -1,0 +1,5 @@
+---
+- name: Remove Docker Storage Configuration all nodes
+  hosts: dockerrm
+  roles:
+    - docker-storage-remove
