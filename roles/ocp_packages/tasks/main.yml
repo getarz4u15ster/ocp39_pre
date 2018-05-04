@@ -1,4 +1,14 @@
 ---
+    - name: Check if user is using RHEL
+      assert:
+        that: "ansible_distribution == 'RedHat'"
+    
+    - name: Disable all repos that aren't relevent to OCP 3.9
+      command: yum-config-manager --disable \*
+    
+    - name: Enable Repos Specific to OCP 3.9
+      command: subscription-manager repos --enable="rhel-7-server-ose-3.9-rpms" --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-fast-datapath-rpms" --enable="rhel-7-server-ansible-2.4-rpms"
+      
     - name: Installing Dependencies for Openshift Container Platform V3.9
       yum:
         name: "{{ item }}"
