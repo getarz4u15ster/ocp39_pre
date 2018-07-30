@@ -1,0 +1,5 @@
+---
+    dockerstorage: /etc/sysconfig/docker-storage-setup
+    dockervg: docker-vg
+    nodename: node1
+    disk: /dev/sdb

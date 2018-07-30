@@ -1,0 +1,13 @@
+---
+    - name: Wipe disk that is part of  Docker Storage Configuration File
+      shell: wipefs -af "{{disk}}"
+
+    - name: Check if docker-vg exists
+      stat:
+        path: /dev/docker-vg
+        get_md5: no
+      register: dockervg_result
+        
+    - name: Creating Docker thin Pools and Configuring storage for docker Containers
+      command: "docker-storage-setup"
+      when: dockervg_result.stat.exists == False
